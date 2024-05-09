@@ -1,25 +1,13 @@
-// import { useState } from 'react';
 import Button from '../Button/Button';
+import css from './Options.module.css';
 
-export default function Options({ Good, Neutral, Bad }) {
+export default function Options({ Good, Neutral, Bad, Reset, Total }) {
   return (
-    <div>
+    <div className={css.contButtons}>
       <Button evtHandlerFunc={Good}>Good</Button>
       <Button evtHandlerFunc={Neutral}>Neutral</Button>
       <Button evtHandlerFunc={Bad}>Bad</Button>
-      {/* <Button evtHandlerFunc={handleToggle}>Reset</Button> */}
+      {Total !== 0 && <Button evtHandlerFunc={Reset}>Reset</Button>}
     </div>
   );
 }
-
-// const [clickGood, setClickGood] = useState(0);
-// const [clickNeutrak, setclickNeutrak] = useState(0);
-// const [clickBad, setclickBad] = useState(0);
-
-// function currentState(setFunc) {
-//   return () => setFunc(clickBtn => clickBtn + 1);
-// }
-
-// const handleClickGood = currentState(setClickGood);
-// const handleClickNeutrak = currentState(setclickNeutrak);
-// const handleClickBad = currentState(setclickBad);

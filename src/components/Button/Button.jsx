@@ -1,3 +1,9 @@
+import css from './Button.module.css';
+
 export default function Button({ evtHandlerFunc, children }) {
-  return <button onClick={evtHandlerFunc}>{children}</button>;
+  return (
+    <button className={css.btn} onClick={evtHandlerFunc}>
+      {children}
+    </button>
+  );
 }
