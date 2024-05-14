@@ -44,7 +44,7 @@ export default function App() {
         Reset={onClickReset}
         Total={totalFeedback}
       />
-      <Feedback good={state.good} neutral={state.neutral} bad={state.bad} total={totalFeedback} />
+      <Feedback feedback={state} total={totalFeedback} />
     </div>
   );
 }

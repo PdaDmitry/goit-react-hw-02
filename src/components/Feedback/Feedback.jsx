@@ -1,6 +1,6 @@
 import css from './Feedback.module.css';
 
-export default function Feedback({ good, neutral, bad, total }) {
+export default function Feedback({ feedback: { good, neutral, bad }, total }) {
   return total ? (
     <ul className={css.contList}>
       <li>Good: {good}</li>
