@@ -1,13 +1,13 @@
 import Button from '../Button/Button';
 import css from './Options.module.css';
 
-export default function Options({ Good, Neutral, Bad, Reset, Total }) {
+export default function Options({ goodReview, neutralReview, badReview, reset, feedbackCount }) {
   return (
     <div className={css.contButtons}>
-      <Button evtHandlerFunc={Good}>Good</Button>
-      <Button evtHandlerFunc={Neutral}>Neutral</Button>
-      <Button evtHandlerFunc={Bad}>Bad</Button>
-      {Total !== 0 && <Button evtHandlerFunc={Reset}>Reset</Button>}
+      <Button evtHandlerFunc={goodReview}>Good</Button>
+      <Button evtHandlerFunc={neutralReview}>Neutral</Button>
+      <Button evtHandlerFunc={badReview}>Bad</Button>
+      {feedbackCount !== 0 && <Button evtHandlerFunc={reset}>Reset</Button>}
     </div>
   );
 }

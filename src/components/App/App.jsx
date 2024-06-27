@@ -4,6 +4,7 @@ import Options from '../Options/Options';
 import obj from '../../obj.json';
 import { useState, useEffect } from 'react';
 import css from './App.module.css';
+import Notification from '../Notification/Notification';
 
 export default function App() {
   const key = 'saved-clicks';
@@ -20,8 +21,9 @@ export default function App() {
   }, [state]);
 
   let totalFeedback = state.good + state.neutral + state.bad;
+  let percentagePositive = Math.round((state.good / totalFeedback) * 100);
 
-  function onClickReset() {
+  function onReset() {
     setState(obj);
   }
 
@@ -38,13 +40,17 @@ export default function App() {
     <div className={css.container}>
       <Description />
       <Options
-        Good={updateFeedback('good')}
-        Neutral={updateFeedback('neutral')}
-        Bad={updateFeedback('bad')}
-        Reset={onClickReset}
-        Total={totalFeedback}
+        goodReview={updateFeedback('good')}
+        neutralReview={updateFeedback('neutral')}
+        badReview={updateFeedback('bad')}
+        reset={onReset}
+        feedbackCount={totalFeedback}
       />
-      <Feedback feedback={state} total={totalFeedback} />
+      {totalFeedback ? (
+        <Feedback feedback={state} feedbackCount={totalFeedback} goodPercent={percentagePositive} />
+      ) : (
+        <Notification />
+      )}
     </div>
   );
 }
